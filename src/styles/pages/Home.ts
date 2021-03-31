@@ -21,3 +21,4 @@ export const Container = styled.div`
     line-height: 32px;
   }
 `
+export const HeaderPage = styled.div``
