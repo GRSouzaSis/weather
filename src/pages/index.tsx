@@ -1,21 +1,24 @@
 import React, { useEffect } from 'react'
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
-
 import RocketseatLogo from '../assets/rocketseat.svg'
 
 import { Container } from '../styles/pages/Home'
-import { getWeather } from '../services/Weather'
+import { getWeather, getCityWeather } from '../services/weather'
+
 const Home: React.FC = () => {
   useEffect(() => {
     name()
   }, [])
 
   async function name() {
-    const data = await getWeather({
-      lat: -23.4431568,
-      lon: -48.8789463,
-      part: 'alerts'
+    // const data = await getWeather({
+    //   lat: -23.4431568,
+    //   lon: -48.8789463,
+    //   part: 'alerts'
+    // })
+    const data = await getCityWeather({
+      city: 'caiua'
     })
     console.log(data)
   }
@@ -35,7 +38,7 @@ const Home: React.FC = () => {
 export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
-      private: process.env.PRIVATE_KEY
+      private: process.env.NEXT_PUBLIC_KEY
     }
   }
 }
