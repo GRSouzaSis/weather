@@ -14,6 +14,7 @@ interface TempProps {
   humidity: number
   windSpeed: number
   weather: string
+  city?: string
 }
 export function Temperature(props: TempProps): JSX.Element {
   return (

@@ -20,7 +20,8 @@ export const getCityWeather = async (
         throw new Error()
     }
   } catch (err) {
-    throw new Error(err)
+    alert('Não foi possivel encontrar essa cidade!')
+    console.log(err)
   }
 }
 
@@ -43,6 +44,6 @@ export const getWeather = async (
         throw new Error()
     }
   } catch (err) {
-    throw new Error(err)
+    console.log(err)
   }
 }
