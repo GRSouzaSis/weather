@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 import RocketseatLogo from '../assets/rocketseat.svg'
-
-import { Container } from '../styles/pages/Home'
 import { getWeather, getCityWeather } from '../services/weather'
-import { HeaderPage } from '../components/HeaderPage'
+import { Temperature } from '../components/Temperature'
 const Home: React.FC = () => {
   const [lat, setLat] = useState(0)
   const [lon, setLon] = useState(0)
@@ -18,7 +16,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     if (location) {
-      getWeatherCiry()
+      // getWeatherCiry()
       // getWeatherLocation()
     }
   }, [location, lat, lon])
@@ -68,13 +66,10 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <HeaderPage />
-      <Container>
-        <Head>
-          <title>Clima Hoje</title>
-        </Head>
-        {/* <RocketseatLogo /> */}
-      </Container>
+      <Head>
+        <title>Clima Hoje</title>
+      </Head>
+      <Temperature />
     </>
   )
 }
