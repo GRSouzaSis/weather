@@ -22,7 +22,7 @@ const Navbar = (): JSX.Element => {
           value={search}
           onChange={e => setSearch(e.target.value)}
           onKeyUp={e => {
-            if (e.key === 'Enter') {
+            if (e.key === 'Enter' && search.length > 2) {
               onClickSearch(search), setSearch('')
             }
           }}

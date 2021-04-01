@@ -7,6 +7,9 @@ interface NavbarContextData {
   onClickSearch: (city: string) => void
   dataResponse: BaseResponseCity
   dataResponseGraph: BaseResponse
+  lat: number
+  lon: number
+  isActive: boolean
 }
 
 export const GlobalContext = createContext({} as NavbarContextData)
@@ -19,13 +22,16 @@ export function GlobalProvider({ children }) {
   const [lat, setLat] = useState(0)
   const [lon, setLon] = useState(0)
   const [location, setLocation] = useState(false)
+  const [isActive, setIsActive] = useState(false)
+
+  const [soughtcity, setSoughtCity] = useState(false)
   const [error, setError] = useState(false)
   useEffect(() => {
     getLocation()
   }, [])
 
   useEffect(() => {
-    if (location) {
+    if (!location) {
       onClickReload()
     }
   }, [location, lat, lon])
@@ -41,9 +47,6 @@ export function GlobalProvider({ children }) {
         error => {
           console.log(error)
           setError(true)
-        },
-        {
-          enableHighAccuracy: true
         }
       )
     } else {
@@ -54,17 +57,22 @@ export function GlobalProvider({ children }) {
     }
   }
   async function onClickReload() {
-    const data = await getWeather({
-      lat: lat,
-      lon: lon,
-      part: 'alerts'
-    })
+    await getLocation()
+    setIsActive(false)
+    if (!isActive) {
+      const data = await getWeather({
+        lat: lat,
+        lon: lon,
+        part: 'alerts'
+      })
 
-    if (data) {
-      setDataResponseGraph(data)
+      if (data) {
+        setDataResponseGraph(data)
+      }
+      console.log('Context Reload', data)
     }
 
-    console.log('Context Reload', data)
+    console.log('Context Reload')
   }
   async function onClickSearch(city: string) {
     const data = await getCityWeather({
@@ -73,10 +81,19 @@ export function GlobalProvider({ children }) {
     if (data) {
       setDataResponse(data)
     }
+    setIsActive(true)
   }
   return (
     <GlobalContext.Provider
-      value={{ onClickReload, onClickSearch, dataResponse, dataResponseGraph }}
+      value={{
+        onClickReload,
+        onClickSearch,
+        dataResponse,
+        dataResponseGraph,
+        lat,
+        lon,
+        isActive
+      }}
     >
       {children}
     </GlobalContext.Provider>

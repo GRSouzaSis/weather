@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { GlobalContext } from '../contexts/GlobalContext'
 import {
   Container,
   Temperatura,
@@ -17,36 +18,40 @@ interface TempProps {
   city?: string
 }
 export function Temperature(props: TempProps): JSX.Element {
+  const { isActive } = useContext(GlobalContext)
+
   return (
     <Container>
       <p className="title">{`Previsão de Hoje ${new Date(
         props.dt * 1000
-      ).toLocaleDateString('pt-BR')} em Presidente Venceslau - SP`}</p>
+      ).toLocaleDateString('pt-BR')} em ${
+        isActive ? props.city : 'sua localização'
+      }`}</p>
       <div className="HeaderTitle">
-        <h1>{props.temp}°</h1>
+        <h1>{Math.floor(props.temp)}°</h1>
       </div>
       <section>
         <Temperatura>
-          <p>Temperatura</p>
+          <strong>Temperatura</strong>
           <div>
             <p>{Math.floor(props.tempMin)}°</p>
             <p className="max">{Math.floor(props.tempMax)}°</p>
           </div>
         </Temperatura>
         <Chuva>
-          <p>Chuva</p>
+          <strong>Chuva</strong>
           <div>
             <p>{props.weather}</p>
           </div>
         </Chuva>
         <Vento>
-          <p>Vento</p>
+          <strong>Vento</strong>
           <div>
             <p>{((props.windSpeed * (60 * 60)) / 1000).toFixed(1)} km/h</p>
           </div>
         </Vento>
         <Umidade>
-          <p>Umidade</p>
+          <strong>Umidade</strong>
           <div>
             <p>{props.humidity}%</p>
           </div>

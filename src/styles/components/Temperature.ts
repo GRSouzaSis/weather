@@ -1,11 +1,16 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+  @media (max-width: 720px) {
+    font-size: 93.75%;
+    width: 80%;
+  }
   width: 50%;
   background-color: white;
   padding: 1rem;
   border-radius: 8px;
   margin: 2rem;
+
   .HeaderTitle {
     align-items: center;
     justify-content: center;
@@ -17,6 +22,10 @@ export const Container = styled.div`
   }
   p {
     font-size: 1.25rem;
+  }
+  section {
+    align-items: center;
+    justify-content: center;
   }
 `
 
