@@ -6,16 +6,17 @@ import { GetServerSideProps } from 'next'
 import { Temperature } from '../components/Temperature'
 import { GlobalContext } from '../contexts/GlobalContext'
 import Graph from '../components/Graph'
+import { Container } from '../styles/pages/Home'
 const Home: React.FC = () => {
   const { dataResponse, dataResponseGraph, isActive } = useContext(
     GlobalContext
   )
   return (
-    <>
+    <Container>
       <Head>
         <title>Clima Hoje</title>
       </Head>
-      <section>
+      <section className="home-section">
 
         {isActive
           ? dataResponse && (
@@ -44,7 +45,7 @@ const Home: React.FC = () => {
       </section>
 
       <Graph/>
-    </>
+    </Container>
   )
 }
 export const getServerSideProps: GetServerSideProps = async () => {

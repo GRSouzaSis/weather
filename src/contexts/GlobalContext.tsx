@@ -71,8 +71,6 @@ export function GlobalProvider({ children }) {
       }
       console.log('Context Reload', data)
     }
-
-    console.log('Context Reload')
   }
   async function onClickSearch(city: string) {
     const data = await getCityWeather({
@@ -80,6 +78,7 @@ export function GlobalProvider({ children }) {
     })
     if (data) {
       setDataResponse(data)
+      console.log('cidade >>', data)
     }
     setIsActive(true)
   }

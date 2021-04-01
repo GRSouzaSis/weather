@@ -28,14 +28,14 @@ export function Temperature(props: TempProps): JSX.Element {
         isActive ? props.city : 'sua localização'
       }`}</p>
       <div className="HeaderTitle">
-        <h1>{Math.floor(props.temp)}°</h1>
+        <h1>{Math.floor(props.temp)}°C</h1>
       </div>
       <section>
         <Temperatura>
           <strong>Temperatura</strong>
           <div>
-            <p>{Math.floor(props.tempMin)}°</p>
-            <p className="max">{Math.floor(props.tempMax)}°</p>
+            <p>{Math.floor(props.tempMin)}°C</p>
+            <p className="max">{Math.floor(props.tempMax)}°C</p>
           </div>
         </Temperatura>
         <Chuva>

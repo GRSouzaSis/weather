@@ -1,8 +1,11 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw; */
+  /* height: 100vh; */
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: column;
 
   display: flex;
   /* justify-content: center;
@@ -19,6 +22,10 @@ export const Container = styled.div`
     margin-top: 24px;
     font-size: 24px;
     line-height: 32px;
+  }
+  section {
+    align-items: center;
+    justify-content: center;
   }
 `
 export const HeaderPage = styled.div``
