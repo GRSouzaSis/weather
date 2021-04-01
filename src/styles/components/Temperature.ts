@@ -23,7 +23,7 @@ export const Container = styled.div`
 export const Temperatura = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-bottom: 4px;
+  padding: 16px 0 16px 0;
   div {
     display: flex;
     p {
@@ -38,31 +38,15 @@ export const Temperatura = styled.div`
 export const Chuva = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-bottom: 4px;
-  div {
-    display: flex;
-    p {
-      margin-left: 1rem;
-    }
-  }
+  padding: 0 0 16px 0;
 `
 export const Vento = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-bottom: 4px;
+  padding: 0 0 16px 0;
 `
 export const Umidade = styled.div`
   display: flex;
   justify-content: space-between;
   padding-bottom: 4px;
-  div {
-    display: flex;
-    p {
-      margin-left: 1rem;
-      color: blue;
-    }
-    .max {
-      color: red;
-    }
-  }
 `

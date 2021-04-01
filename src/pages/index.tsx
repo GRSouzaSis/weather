@@ -83,6 +83,10 @@ const Home: React.FC = () => {
       </Head>
       {weatherDate && (
         <Temperature
+          humidity={weatherDate.current.humidity}
+          weather={weatherDate.current.weather[0].description}
+          windSpeed={weatherDate.current.wind_speed}
+          dt={weatherDate.current.dt}
           temp={weatherDate.current.temp}
           tempMax={weatherDate.daily[0].temp.max}
           tempMin={weatherDate.daily[0].temp.min}
