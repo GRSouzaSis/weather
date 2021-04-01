@@ -1,13 +1,17 @@
+/* eslint-disable no-extra-boolean-cast */
 import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 import RocketseatLogo from '../assets/rocketseat.svg'
 import { getWeather, getCityWeather } from '../services/weather'
 import { Temperature } from '../components/Temperature'
+import { BaseResponse } from '../models/ResponseModel'
 const Home: React.FC = () => {
   const [lat, setLat] = useState(0)
   const [lon, setLon] = useState(0)
   const [location, setLocation] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [weatherDate, setWeatherDate] = useState<BaseResponse>()
   const [error, setError] = useState(false)
 
   useEffect(() => {
@@ -17,7 +21,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     if (location) {
       // getWeatherCiry()
-      // getWeatherLocation()
+      getWeatherLocation()
     }
   }, [location, lat, lon])
 
@@ -53,15 +57,23 @@ const Home: React.FC = () => {
   }
 
   async function getWeatherLocation() {
+    setLoading(true)
     const data = await getWeather({
       lat: lat,
       lon: lon,
       part: 'alerts'
     })
+
+    if (!!data) {
+      setWeatherDate(data)
+    }
+
+    setLoading(false)
     // const data = await getCityWeather({
     //   city: 'caiua'
     // })
     console.log('resp >>', data)
+    console.log('resp >>', weatherDate)
   }
 
   return (
@@ -69,7 +81,13 @@ const Home: React.FC = () => {
       <Head>
         <title>Clima Hoje</title>
       </Head>
-      <Temperature />
+      {weatherDate && (
+        <Temperature
+          temp={weatherDate.current.temp}
+          tempMax={weatherDate.daily[0].temp.max}
+          tempMin={weatherDate.daily[0].temp.min}
+        />
+      )}
     </>
   )
 }

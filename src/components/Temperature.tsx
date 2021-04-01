@@ -6,19 +6,24 @@ import {
   Umidade,
   Vento
 } from '../styles/components/Temperature'
-export function Temperature(): JSX.Element {
+interface TempProps {
+  tempMin: number
+  tempMax: number
+  temp: number
+}
+export function Temperature(props: TempProps): JSX.Element {
   return (
     <Container>
       <p className="title">Tempo agora em Presidente Venceslau - SP</p>
       <div className="HeaderTitle">
-        <h1>35°</h1>
+        <h1>{props.temp}°</h1>
       </div>
       <section>
         <Temperatura>
           <p>Temperatura</p>
           <div>
-            <p>20°</p>
-            <p className="max">32°</p>
+            <p>{Math.floor(props.tempMin)}°</p>
+            <p className="max">{Math.floor(props.tempMax)}°</p>
           </div>
         </Temperatura>
         <Chuva>

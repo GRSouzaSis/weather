@@ -30,7 +30,7 @@ export const getWeather = async (
   const { lat, lon, part } = param
   try {
     const getResponse = await api.get(
-      `onecall?lat=${lat}&lon=${lon}&exclude=${part}&appid=${process.env.NEXT_PUBLIC_KEY}`
+      `onecall?lat=${lat}&lon=${lon}&exclude=${part}&appid=${process.env.NEXT_PUBLIC_KEY}&lang=pt_br&units=metric`
     )
 
     const data = getResponse.data || ({} as BaseResponse)
