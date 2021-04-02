@@ -11,5 +11,5 @@ export namespace RequestWeather {
     lang?: string
   }
 
-  export type Exclude = 'alerts'
+  export type Exclude = 'alerts,minutely'
 }

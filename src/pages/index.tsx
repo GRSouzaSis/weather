@@ -6,11 +6,24 @@ import { GetServerSideProps } from 'next'
 import { Temperature } from '../components/Temperature'
 import { GlobalContext } from '../contexts/GlobalContext'
 import Graph from '../components/Graph'
-import { Container } from '../styles/pages/Home'
+import { CardDaily, Container } from '../styles/pages/Home'
+import DailyCard from '../components/DailyCard'
+import { Hourly } from '../models/ResponseModel'
 const Home: React.FC = () => {
   const { dataResponse, dataResponseGraph, isActive } = useContext(
     GlobalContext
   )
+  const handleHour = (date: Date) => {
+    return `${date.getHours()}:00`
+  }
+
+  const getHours = (hours: Hourly[]): Hourly[] => {
+    return hours.filter((_hour, index) => {
+      if (index <= 23) return true
+    })
+  }
+  const hours = getHours(!!dataResponseGraph ? dataResponseGraph.hourly : [])
+
   return (
     <Container>
       <Head>
@@ -31,7 +44,7 @@ const Home: React.FC = () => {
               city={dataResponse.name}
             />
           )
-          : dataResponseGraph && (
+          : dataResponseGraph && (<>
             <Temperature
               humidity={dataResponseGraph.current.humidity}
               weather={dataResponseGraph.current.weather[0].description}
@@ -41,10 +54,26 @@ const Home: React.FC = () => {
               tempMax={dataResponseGraph.daily[0].temp.max}
               tempMin={dataResponseGraph.daily[0].temp.min}
             />
+            <CardDaily>
+              {
+                dataResponseGraph.daily.map((item, i) => {
+                  <DailyCard key={i}
+                    // desciption={item.weather[i].description}
+                    dt={item.dt}
+                    tempMax={item.temp.max}
+                    tempMin={item.temp.min}
+                  />
+                })
+              }
+
+            </CardDaily>
+          </>
           )}
       </section>
-
-      <Graph/>
+      <Graph
+        dataGraph={hours.map(value => value.temp)}
+        labelsGraph={hours.map((value) => handleHour(new Date(value.dt * 1000)))}
+      />
     </Container>
   )
 }

@@ -4,7 +4,8 @@ const theme = {
     text: '#121214',
     primary: '#007ecd',
     primaryMedium: '#0268a3',
-    primaryDark: '#004983'
+    primaryDark: '#004983',
+    white: '#fff'
   }
 }
 

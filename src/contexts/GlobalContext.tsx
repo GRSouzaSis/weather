@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { createContext, useEffect, useState } from 'react'
+import { createContext, ReactNode, useEffect, useState } from 'react'
 import { BaseResponse, BaseResponseCity } from '../models/ResponseModel'
 import { getCityWeather, getWeather } from '../services/weather'
 interface NavbarContextData {
@@ -15,10 +15,8 @@ interface NavbarContextData {
 export const GlobalContext = createContext({} as NavbarContextData)
 
 export function GlobalProvider({ children }) {
-  const [dataResponse, setDataResponse] = useState<BaseResponseCity>(undefined)
-  const [dataResponseGraph, setDataResponseGraph] = useState<BaseResponse>(
-    undefined
-  )
+  const [dataResponse, setDataResponse] = useState<BaseResponseCity>(null)
+  const [dataResponseGraph, setDataResponseGraph] = useState<BaseResponse>(null)
   const [lat, setLat] = useState(0)
   const [lon, setLon] = useState(0)
   const [location, setLocation] = useState(false)
@@ -63,7 +61,7 @@ export function GlobalProvider({ children }) {
       const data = await getWeather({
         lat: lat,
         lon: lon,
-        part: 'alerts'
+        part: 'alerts,minutely'
       })
 
       if (data) {

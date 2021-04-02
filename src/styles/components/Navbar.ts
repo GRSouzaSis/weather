@@ -20,7 +20,7 @@ export const Nav = styled.nav`
     background-color: ${props => props.theme.colors.primaryMedium};
     padding: 0.8rem;
     border-radius: 8px;
-    margin: 1rem;
+    margin-right: 1rem;
   }
   input {
     width: 100%;
