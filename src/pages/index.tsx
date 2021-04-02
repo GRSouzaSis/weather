@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-extra-boolean-cast */
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 import { Temperature } from '../components/Temperature'

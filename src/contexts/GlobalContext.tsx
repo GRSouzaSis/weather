@@ -21,7 +21,6 @@ export function GlobalProvider({ children }) {
   const [lon, setLon] = useState(0)
   const [location, setLocation] = useState(false)
   const [isActive, setIsActive] = useState(false)
-  const [error, setError] = useState(false)
   useEffect(() => {
     getLocation()
   }, [])
@@ -42,11 +41,9 @@ export function GlobalProvider({ children }) {
         },
         error => {
           console.log(error)
-          setError(true)
         }
       )
     } else {
-      setError(true)
       alert(
         'Seu navegador não suporta a função de localização! Busque o nome da localização desejada'
       )
