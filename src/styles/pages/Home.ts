@@ -1,21 +1,28 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+  @media (max-width: 720px) {
+    display: flex;
+    flex-direction: column;
+  }
   align-items: center;
-  flex-direction: column;
-  display: flex;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex-direction: row;
   h1 {
     font-size: 54px;
     color: ${props => props.theme.colors.primary};
   }
-
-  /* p {
-    font-size: 16px;
-    line-height: 32px;
-  } */
-  section {
-    align-items: center;
-    justify-content: center;
-  }
 `
-export const CardDaily = styled.div``
+export const CardDaily = styled.div`
+  height: auto;
+  background-color: ${props => props.theme.colors.background};
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  /* overflow: hidden; */
+`

@@ -9,7 +9,7 @@ export const Container = styled.div`
   background-color: white;
   padding: 1rem;
   border-radius: 8px;
-  margin: 2rem;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
 
   .HeaderTitle {
     align-items: center;
@@ -36,6 +36,7 @@ export const Temperatura = styled.div`
       margin-left: 1rem;
       color: blue;
       align-items: center;
+      font-weight: 500;
     }
     .max {
       align-items: center;

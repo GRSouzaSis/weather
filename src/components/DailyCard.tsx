@@ -18,7 +18,7 @@ const DailyCard = (props: DailyTempProps): JSX.Element => {
       <p>{props.desciption}</p>
       <div className="tempDaily">
         <p>{Math.floor(props.tempMin)}°C </p>
-        <p>{Math.floor(props.tempMax)}°C</p>
+        <p className="max">{Math.floor(props.tempMax)}°C</p>
       </div>
     </Card>
   )

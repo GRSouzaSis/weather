@@ -3,6 +3,7 @@ import React from 'react'
 import { Line } from 'react-chartjs-2'
 import { ChartDataSets, ChartOptions } from 'chart.js'
 import theme from '../styles/theme'
+import { Card } from '../styles/components/Graph'
 
 interface GraphProps {
   labelsGraph: string[]
@@ -24,9 +25,9 @@ const Graph = (props: GraphProps): JSX.Element => {
       borderDash: [],
       borderDashOffset: 0.0,
       borderJoinStyle: 'miter',
-      pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBorderWidth: 2,
+      pointBorderWidth: 5,
+      pointHoverRadius: 1,
+      pointHoverBorderWidth: 1,
       pointRadius: 1,
       pointHitRadius: 10,
       data: dataGraph
@@ -34,7 +35,6 @@ const Graph = (props: GraphProps): JSX.Element => {
   ]
 
   const options: ChartOptions = {
-    // showLines: false,
     animation: {
       duration: 1000
     },
@@ -56,7 +56,8 @@ const Graph = (props: GraphProps): JSX.Element => {
     },
     legend: {
       position: 'bottom',
-      display: true,
+      display: false,
+
       labels: {
         usePointStyle: true
       }
@@ -68,10 +69,10 @@ const Graph = (props: GraphProps): JSX.Element => {
     datasets: datasets
   }
   return (
-    <div>
-      <p>Clima Hoje 2021</p>
+    <Card>
+      {/* <p>Clima Hoje 2021</p> */}
       <Line data={data} options={options}></Line>
-    </div>
+    </Card>
   )
 }
 

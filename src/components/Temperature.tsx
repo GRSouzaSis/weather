@@ -22,9 +22,9 @@ export function Temperature(props: TempProps): JSX.Element {
 
   return (
     <Container>
-      <p className="title">{`Previsão de Hoje ${new Date(
+      <p className="title">{`Previsão para ${new Date(
         props.dt * 1000
-      ).toLocaleDateString('pt-BR')} em ${
+      ).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' })} em ${
         isActive ? props.city : 'sua localização'
       }`}</p>
       <div className="HeaderTitle">
