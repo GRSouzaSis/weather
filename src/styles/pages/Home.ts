@@ -16,6 +16,10 @@ export const Container = styled.div`
   }
 `
 export const CardDaily = styled.div`
+  @media (max-width: 720px) {
+    font-size: 98.75%;
+    width: 100%;
+  }
   height: auto;
   background-color: ${props => props.theme.colors.background};
   display: flex;
@@ -23,6 +27,4 @@ export const CardDaily = styled.div`
   justify-content: space-between;
   overflow-x: auto;
   overflow-y: hidden;
-
-  /* overflow: hidden; */
 `

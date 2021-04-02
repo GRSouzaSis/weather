@@ -3,9 +3,8 @@ import styled from 'styled-components'
 export const Container = styled.div`
   @media (max-width: 720px) {
     font-size: 93.75%;
-    width: 80%;
+    width: 100%;
   }
-  /* width: 50%; */
   background-color: white;
   padding: 1rem;
   border-radius: 8px;
@@ -34,7 +33,7 @@ export const Temperatura = styled.div`
     display: flex;
     p {
       margin-left: 1rem;
-      color: blue;
+      color: ${props => props.theme.colors.primaryDark};
       align-items: center;
       font-weight: 500;
     }

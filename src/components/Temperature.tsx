@@ -1,5 +1,7 @@
 import React, { useContext } from 'react'
 import { GlobalContext } from '../contexts/GlobalContext'
+import { MdLocationOn } from 'react-icons/md'
+
 import {
   Container,
   Temperatura,
@@ -22,11 +24,13 @@ export function Temperature(props: TempProps): JSX.Element {
 
   return (
     <Container>
-      <p className="title">{`Previsão para ${new Date(
-        props.dt * 1000
-      ).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' })} em ${
-        isActive ? props.city : 'sua localização'
-      }`}</p>
+      <p className="title">
+        {`Previsão para ${new Date(props.dt * 1000).toLocaleDateString(
+          'pt-BR',
+          { day: '2-digit', month: 'short' }
+        )} em ${isActive ? props.city : 'sua localização'}`}
+        <MdLocationOn size={20} />
+      </p>
       <div className="HeaderTitle">
         <h1>{Math.floor(props.temp)}°C</h1>
       </div>

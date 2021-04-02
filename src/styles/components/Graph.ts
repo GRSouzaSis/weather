@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
 export const Card = styled.div`
+  @media (max-width: 720px) {
+    font-size: 93.75%;
+    width: 100%;
+  }
   background-color: ${props => props.theme.colors.white};
   padding: 1rem;
   margin: 1rem;

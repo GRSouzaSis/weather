@@ -5,10 +5,13 @@ export const Card = styled.div`
   padding: 0.5rem;
   margin: 0.5rem;
   width: 110px;
-  height: 100px;
+  height: auto;
   text-align: center;
   border-radius: 8px;
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
+  strong {
+    color: ${props => props.theme.colors.primaryMedium};
+  }
   p {
     margin: 4px;
   }
@@ -16,7 +19,7 @@ export const Card = styled.div`
     display: flex;
     justify-content: space-around;
     p {
-      color: blue;
+      color: ${props => props.theme.colors.primaryDark};
       font-weight: 500;
     }
     .max {

@@ -18,7 +18,7 @@ const Navbar = (): JSX.Element => {
       </div>
       <div className="search">
         <input
-          placeholder="Busque por uma cidade"
+          placeholder="Buscar por cidade"
           value={search}
           onChange={e => setSearch(e.target.value)}
           onKeyUp={e => {
