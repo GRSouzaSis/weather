@@ -7,10 +7,10 @@ Previsões do tempo utilizando a API [https://openweathermap.org/api](https://op
   - [Next.js](https://nextjs.org/)
   * Para mais detalhes, veja o [package.json](https://github.com/GRSouzaSis/weather/blob/master/package.json)
 ## Executando
- # Clone este repositório
+ ### Clone este repositório
  $ git clone https://github.com/GRSouzaSis/weather.git
 
- # Instale as dependências
+ ### Instale as dependências
  $ yarn install
 
 ### Crie um arquivo .env na raiz do projeto
