@@ -17,8 +17,8 @@ export const GlobalContext = createContext({} as NavbarContextData)
 export function GlobalProvider({ children }) {
   const [dataResponse, setDataResponse] = useState<BaseResponseCity>(null)
   const [dataResponseGraph, setDataResponseGraph] = useState<BaseResponse>(null)
-  const [lat, setLat] = useState(0)
-  const [lon, setLon] = useState(0)
+  const [lat, setLat] = useState(-23.5489)
+  const [lon, setLon] = useState(-46.6388)
   const [location, setLocation] = useState(false)
   const [isActive, setIsActive] = useState(false)
   useEffect(() => {

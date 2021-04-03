@@ -12,6 +12,7 @@ const DailyCard = (props: DailyTempProps): JSX.Element => {
     <Card>
       <strong>
         {new Date(props.dt * 1000).toLocaleDateString('pt-BR', {
+          day: '2-digit',
           weekday: 'short'
         })}
       </strong>

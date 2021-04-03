@@ -16,28 +16,25 @@ const Graph = (props: GraphProps): JSX.Element => {
   const datasets: ChartDataSets[] = [
     {
       fill: false,
-      lineTension: 0,
       borderColor: theme.colors.primary,
       pointBackgroundColor: theme.colors.primary,
       pointBorderColor: theme.colors.primary,
-      backgroundColor: '#FFF',
-      borderCapStyle: 'butt',
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: 'miter',
+      borderJoinStyle: 'bevel',
       pointBorderWidth: 5,
       pointHoverRadius: 1,
       pointHoverBorderWidth: 1,
       pointRadius: 1,
-      pointHitRadius: 10,
-      data: dataGraph
+      pointHitRadius: 5,
+      data: dataGraph,
+      label: 'C°'
     }
   ]
 
   const options: ChartOptions = {
     animation: {
-      duration: 1000
+      duration: 1500
     },
+    responsive: true,
     scales: {
       yAxes: [
         {
@@ -54,13 +51,29 @@ const Graph = (props: GraphProps): JSX.Element => {
         }
       ]
     },
+    layout: {
+      padding: {
+        top: 8,
+        left: 0,
+        right: 0,
+        bottom: 8
+      }
+    },
     legend: {
       position: 'bottom',
-      display: false,
+      display: true,
 
       labels: {
-        usePointStyle: true
+        usePointStyle: true,
+        padding: 4
       }
+    },
+    tooltips: {
+      displayColors: false,
+      titleFontSize: 16,
+      bodyFontSize: 14,
+      xPadding: 10,
+      yPadding: 10
     }
   }
 
